@@ -1,9 +1,11 @@
 package testPackage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -41,7 +43,7 @@ public class TasksTests {
     }
 
     @Test //TC3
-    public void test(){
+    public void test3(){
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://duckduckgo.com/");
@@ -61,4 +63,22 @@ public class TasksTests {
         driver.quit();
     }
 
+    @Test //TC7
+    public void CountryForTheCompany(){
+
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+        WebDriver driver = new ChromeDriver(chromeOptions);
+
+        driver.manage().window().maximize();
+        driver.navigate().to("https://www.w3schools.com/html/html_tables.asp");
+
+        By austriaCountry =By.xpath("//table[@id='customers']//tr[td[text()='Ernst Handel']]/td[text()='Austria']");
+        boolean isAustriaCountryDisplayed = driver.findElement(austriaCountry).isDisplayed();
+        Assert.assertTrue(isAustriaCountryDisplayed);
+
+
+        driver.quit();
+
+    }
 }
