@@ -16,6 +16,7 @@ public class DuckDuckGoTest {
 
     WebDriver driver =null;
     Wait<WebDriver> wait = null;
+
     /**#1
      _ Basic _
      Open Google Chrome
@@ -38,14 +39,13 @@ Assert that the DuckDuckGo logo is displayed
 Close Google Chrome
 
     * */
-    @Test(dependsOnMethods = "TitleTest")
+    @Test
     public void logoTest() {
 
         driver.navigate().to("https://duckduckgo.com/");
         wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         wait.until(d -> DuckDuckGoLandingPage.logo(driver).isDisplayed());
         Assert.assertTrue(DuckDuckGoLandingPage.logo(driver).isDisplayed());
-
     }
 
     /**#3
@@ -56,7 +56,7 @@ Search for [Selenium WebDriver]
 Assert that the link of the first result is [https://www.selenium.dev/documentation/webdriver/]
 Close Google Chrome
 */
-    @Test(dependsOnMethods = "logoTest")
+    @Test
     public void searchLinkTest() {
        driver.navigate().to("https://duckduckgo.com/");
        driver.findElement(DuckDuckGoLandingPage.searchBox(driver)).sendKeys("Selenium WebDriver", Keys.ENTER);
