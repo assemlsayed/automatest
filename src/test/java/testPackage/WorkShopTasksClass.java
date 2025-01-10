@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
-public class TasksTests {
+public class WorkShopTasksClass {
 
     @Test //TC1
     public void test1() {
@@ -63,6 +63,14 @@ public class TasksTests {
         driver.quit();
     }
 
+    /**
+     * #7
+     * ________________ Moderate ________________
+     * Open Google Chrome
+     * Navigate to [https://www.w3schools.com/html/html_tables.asp]
+     * Assert that the Country for the Company [Ernst Handel] is [Austria]
+     * Close Google Chrome
+     */
     @Test //TC7
     public void CountryForTheCompany(){
 
@@ -73,7 +81,7 @@ public class TasksTests {
         driver.manage().window().maximize();
         driver.navigate().to("https://www.w3schools.com/html/html_tables.asp");
 
-        By austriaCountry =By.xpath("//table[@id='customers']//tr[td[text()='Ernst Handel']]/td[text()='Austria']");
+        By austriaCountry =By.xpath("//table[@id='customers']//tr[text()='Ernst Handel']/td[text()='Austria']");
         boolean isAustriaCountryDisplayed = driver.findElement(austriaCountry).isDisplayed();
         Assert.assertTrue(isAustriaCountryDisplayed);
 
